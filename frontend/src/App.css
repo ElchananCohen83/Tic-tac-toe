@@ -1,0 +1,29 @@
+#root {
+  max-width: 1280px;
+  /* margin: 0 auto; */
+  text-align: center;
+  height: 100vh; /* Set the height of #root to 100% of the viewport height */
+
+}
+
+.squares {
+  background-color: #21213E;
+  color: #F6C927;
+  font-size: 400%; /* Set font size as a percentage of the width */
+  width: 20vmin; /* Set width based on the smaller of vw and vh */
+  height: 20vmin; /* Set height based on the smaller of vw and vh */
+}
+
+
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  max-width: 60vmin;
+  height: 100%; /* Set the height of .board to 100% of its parent's height */
+}
+
+
