@@ -1,20 +1,30 @@
+from flask import Flask, request, jsonify, session
+from flask_cors import CORS
 import StepAndRool as sar
 
-def main():
-    print('היי חבר! אתה מוזמן לשחק איתי X/O מקווה שתהנה מכל רגע :)')
-    print('אם אתה מעוניין לשחק עם חבר הקש 1, אם אתה מעוניין לשחק נגד המחשב הקש 2, ליציאה הקש 3')
-    print("כדי לשחק עליך להכניס מספר (שורה) רווח ומספר(עמודה) לדוגמא: 2 3 (שים לב: על המספר להיות בין 1-3")
+app = Flask(__name__)
+CORS(app, origins="http://localhost:5173")
+app.secret_key = 'your_secret_key'
 
-    def plays():
-        count = 1
-        while sar.win(tictactoe) != True:
-            if sar.check_step(tictactoe,bool(count%2), play, count) != False:
-                count += 1
-                sar.print_board(tictactoe)
-        print('מאוד נהנתי לשחק איתך :) , רוצה לשחק שוב? אם לא הקש 9')
-        if input() != '9':
-            main()
+@app.route('/api/data', methods=['POST'])
+def post_data():
+    data = request.get_json()
+    squares = data.get('squares', [])
+    vsAI = data.get('vsAI')
 
-    plays()
+    nested_array = [squares[i:i+3] for i in range(0, 9, 3)]
+    squares = nested_array
 
-main()
+    result = sar.make_step(squares, vsAI)
+    # print(squares)
+
+
+    if sar.win(squares) is False:
+        return jsonify({"squares":squares , "win": False})
+    else:
+        result = sar.win(squares)
+        return jsonify({"squares":squares , "win": result})
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5001)

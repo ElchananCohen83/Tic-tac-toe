@@ -1,143 +1,303 @@
-############################################################
-def computer(tictactoe, count):
-    if count == 1:
-        if tictactoe[1][1] == '-':
-            tictactoe[1][1] = 'O'
-            return
-        else:
-            tictactoe[0][0] = 'O'
-            return
+def computer(squares):
+    if squares[1][1] == '':
+        squares[1][1] = 'O'
+        return
+    elif squares[0][0] == '':
+        squares[0][0] = 'O'
+        return
 
-    if checkrow_O(tictactoe) == True:
+    if checkrow_O(squares) == True:
         return
-    if checkcolumn_O(tictactoe) == True:
+    if checkcolumn_O(squares) == True:
         return
-    if checkcdiagonally(tictactoe) == True:
+    if checkcdiagonally(squares) == True:
         return
-    if checkrow_X(tictactoe) == True:
+    if checkrow_X(squares) == True:
         return
-    if checkcolumn_X(tictactoe) == True:
+    if checkcolumn_X(squares) == True:
         return
-    if check3slots(tictactoe) == True:
+    if check3slots(squares) == True:
         return
 
 ############################################################
 
-def checkrow_O(tictactoe):
-    for i in range(len(tictactoe)):
-        if '-' in tictactoe[i]:
-            for j in range(len(tictactoe[i])):
-                if tictactoe[i].count('O') == 2:
-                    if tictactoe[i][j] == '-':
-                        tictactoe[i][j] = 'O'
+def checkrow_O(squares):
+    for i in range(len(squares)):
+        if '' in squares[i]:
+            for j in range(len(squares[i])):
+                if squares[i].count('O') == 2:
+                    if squares[i][j] == '':
+                        squares[i][j] = 'O'
                         return True
 
 ############################################################
 
-def checkcolumn_O(tictactoe:list):
-    for i in range(len(tictactoe)):
-            if tictactoe[0][i] == 'O' and tictactoe[0][i] == tictactoe[1][i]:
-                if tictactoe[2][i] == '-':
-                    tictactoe[2][i] = 'O'
+def checkcolumn_O(squares:list):
+    for i in range(len(squares)):
+            if squares[0][i] == 'O' and squares[0][i] == squares[1][i]:
+                if squares[2][i] == '':
+                    squares[2][i] = 'O'
                     return True
-            if tictactoe[1][i] == 'O' and tictactoe[1][i] == tictactoe[2][i]:
-                if tictactoe[0][i] == '-':
-                    tictactoe[0][i] = 'O'
+            if squares[1][i] == 'O' and squares[1][i] == squares[2][i]:
+                if squares[0][i] == '':
+                    squares[0][i] = 'O'
                     return True
-            if tictactoe[0][i] != '-' and tictactoe[0][i] == tictactoe[2][i]:
-                if tictactoe[1][i] == '-':
-                    tictactoe[1][i] = 'O'
+            if squares[0][i] != '' and squares[0][i] == squares[2][i]:
+                if squares[1][i] == '':
+                    squares[1][i] = 'O'
                     return True
 
 ############################################################
 
-def checkcdiagonally(tictactoe: list):
+def checkcdiagonally(squares: list):
     #checkcdiagonally_from left to right
-        if tictactoe[0][0] == tictactoe[1][1]: # if... == 'O'
-            if tictactoe[2][2] == '-':
-                tictactoe[2][2] = 'O'
+        if squares[0][0] == squares[1][1]: # if... == 'O'
+            if squares[2][2] == '':
+                squares[2][2] = 'O'
                 return True
-        if tictactoe[1][1] != '-' and tictactoe[1][1] == tictactoe[2][2]:
-            if tictactoe[0][0] == '-':
-                tictactoe[0][0] = 'O'
+        if squares[1][1] != '' and squares[1][1] == squares[2][2]:
+            if squares[0][0] == '':
+                squares[0][0] = 'O'
                 return True
             else:
-                if tictactoe[0][2] == '-':
-                    tictactoe[0][2] = 'O'
+                if squares[0][2] == '':
+                    squares[0][2] = 'O'
                     return True
                 2
-                if tictactoe[0][1] == '-':
-                    tictactoe[0][1] = 'O'
+                if squares[0][1] == '':
+                    squares[0][1] = 'O'
                     return True
 
     #checkcdiagonally_from righ to tleft
-        if tictactoe[0][2] != '-' and tictactoe[0][2] == tictactoe[1][1]:
-            if tictactoe[2][0] == '-':
-                tictactoe[2][0] = 'O'
+        if squares[0][2] != '' and squares[0][2] == squares[1][1]:
+            if squares[2][0] == '':
+                squares[2][0] = 'O'
                 return True
-        if tictactoe[1][1] != '-' and tictactoe[1][1] == tictactoe[2][0]:
-            if tictactoe[0][2] == '-':
-                tictactoe[0][2] = 'O'
+        if squares[1][1] != '' and squares[1][1] == squares[2][0]:
+            if squares[0][2] == '':
+                squares[0][2] = 'O'
                 return True
 
 ############################################################
 
-def checkrow_X(tictactoe):
-    for i in range(len(tictactoe)):
-        if '-' in tictactoe[i]:
-            for j in range(len(tictactoe[i])):
-                if tictactoe[i].count('X') == 2:
-                    if tictactoe[i][j] == '-':
-                        tictactoe[i][j] = 'O'
+def checkrow_X(squares):
+    for i in range(len(squares)):
+        if '' in squares[i]:
+            for j in range(len(squares[i])):
+                if squares[i].count('X') == 2:
+                    if squares[i][j] == '':
+                        squares[i][j] = 'O'
                         return True
 
 ############################################################
 
-def checkcolumn_X(tictactoe:list):
-    for i in range(len(tictactoe)):
-            if tictactoe[0][i] == 'X' and tictactoe[0][i] == tictactoe[1][i]:
-                if tictactoe[2][i] == '-':
-                    tictactoe[2][i] = 'O'
+def checkcolumn_X(squares:list):
+    for i in range(len(squares)):
+            if squares[0][i] == 'X' and squares[0][i] == squares[1][i]:
+                if squares[2][i] == '':
+                    squares[2][i] = 'O'
                     return True
-            if tictactoe[1][i] == 'X' and tictactoe[1][i] == tictactoe[2][i]:
-                if tictactoe[0][i] == '-':
-                    tictactoe[0][i] = 'O'
+            if squares[1][i] == 'X' and squares[1][i] == squares[2][i]:
+                if squares[0][i] == '':
+                    squares[0][i] = 'O'
                     return True
-            if tictactoe[0][i] == 'X' and tictactoe[0][i] == tictactoe[2][i]:
-                if tictactoe[1][i] == '-':
-                    tictactoe[1][i] = 'O'
+            if squares[0][i] == 'X' and squares[0][i] == squares[2][i]:
+                if squares[1][i] == '':
+                    squares[1][i] = 'O'
                     return True
 
 ############################################################
 
-def  check3slots(tictactoe: list):
-    if tictactoe[1][1] == 'O':
-        if tictactoe[0][0] == 'X' and tictactoe[2][2] == 'X' or tictactoe[0][2] == 'X' and tictactoe [2][0] == 'X':
-            if tictactoe[0][1] == '-':
-                tictactoe[0][1] = 'O'
+def  check3slots(squares: list):
+    if squares[1][1] == 'O':
+        if squares[0][0] == 'X' and squares[2][2] == 'X' or squares[0][2] == 'X' and squares [2][0] == 'X':
+            if squares[0][1] == '':
+                squares[0][1] = 'O'
                 return True
-            if tictactoe[2][1] == '-':
-                tictactoe[2][1] = 'O'
+            if squares[2][1] == '':
+                squares[2][1] = 'O'
                 return True
-        if tictactoe[0][0] == 'X' and tictactoe[1][2] == 'X' or tictactoe[0][1] == 'X' and tictactoe[2][2] == 'X' or tictactoe[0][1] == 'X' and tictactoe[1][2] == 'X':
-            if tictactoe[0][2] == '-':
-                tictactoe[0][2] = 'O'
+        if squares[0][0] == 'X' and squares[1][2] == 'X' or squares[0][1] == 'X' and squares[2][2] == 'X' or squares[0][1] == 'X' and squares[1][2] == 'X':
+            if squares[0][2] == '':
+                squares[0][2] = 'O'
                 return True
-        if tictactoe[0][2] == 'X' and tictactoe[1][0] == 'X' or tictactoe[0][1] == 'X' and tictactoe[2][0] == 'X' or tictactoe[0][1] == 'X' and tictactoe[1][0] == 'X' :#or tictactoe[0][1] == 'X' and tictactoe[2][1] or tictactoe[1][0] == 'X' and tictactoe[1][2]:
-            if tictactoe[0][0] == '-':
-                tictactoe[0][0] = 'O'
+        if squares[0][2] == 'X' and squares[1][0] == 'X' or squares[0][1] == 'X' and squares[2][0] == 'X' or squares[0][1] == 'X' and squares[1][0] == 'X' :#or tictactoe[0][1] == 'X' and tictactoe[2][1] or tictactoe[1][0] == 'X' and tictactoe[1][2]:
+            if squares[0][0] == '':
+                squares[0][0] = 'O'
                 return True
-        if tictactoe[0][2] == 'X' and tictactoe[2][1] == 'X' or tictactoe[1][2] == 'X' and tictactoe[2][0] == 'X' or tictactoe[1][2] == 'X' and tictactoe[2][1] == 'X':
-            if tictactoe[2][2] == '-':
-                tictactoe[2][2] = 'O'
+        if squares[0][2] == 'X' and squares[2][1] == 'X' or squares[1][2] == 'X' and squares[2][0] == 'X' or squares[1][2] == 'X' and squares[2][1] == 'X':
+            if squares[2][2] == '':
+                squares[2][2] = 'O'
                 return True
-        if tictactoe[0][0] == 'X' and tictactoe[2][1] == 'X' or tictactoe[1][0] == 'X' and tictactoe[2][2] == 'X' or tictactoe[1][0] == 'X' and tictactoe[2][1] == 'X':
-            if tictactoe[2][0] == '-':
-                tictactoe[2][0] = 'O'
+        if squares[0][0] == 'X' and squares[2][1] == 'X' or squares[1][0] == 'X' and squares[2][2] == 'X' or squares[1][0] == 'X' and squares[2][1] == 'X':
+            if squares[2][0] == '':
+                squares[2][0] = 'O'
                 return True
 
-    for i in range(len(tictactoe)):
-        for j in range(len(tictactoe[i])):
-            if tictactoe[i][j] == '-':
-                tictactoe[i][j] = 'O'
+    for i in range(len(squares)):
+        for j in range(len(squares[i])):
+            if squares[i][j] == '':
+                squares[i][j] = 'O'
                 return True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def computer(squares):
+
+#     if not squares[1][1]:
+#         squares[1][1] = 'O'
+#         return
+#     elif not squares[0][0]:
+#         squares[0][0] = 'O'
+#         return
+    
+#     if checkrow_O(squares) == True:
+#         return
+#     if checkcolumn_O(squares) == True:
+#         return
+#     if checkcdiagonally(squares) == True:
+#         return
+#     if checkrow_X(squares) == True:
+#         return
+#     if checkcolumn_X(squares) == True:
+#         return
+#     if check3slots(squares) == True:
+#         return
+
+# ############################################################
+
+# def checkrow_O(squares):
+#     for i in range(len(squares)):
+#         if '' in squares[i]:
+#             for j in range(len(squares[i])):
+#                 if squares[i].count('O') == 2:
+#                     if squares[i][j] == '':
+#                         squares[i][j] = 'O'
+#                         return True
+
+# ############################################################
+
+# def checkcolumn_O(squares:list):
+#     for i in range(len(squares)):
+#             if squares[0][i] == 'O' and squares[0][i] == squares[1][i]:
+#                 if squares[2][i] == '':
+#                     squares[2][i] = 'O'
+#                     return True
+#             if squares[1][i] == 'O' and squares[1][i] == squares[2][i]:
+#                 if squares[0][i] == '':
+#                     squares[0][i] = 'O'
+#                     return True
+#             if squares[0][i] and squares[0][i] == squares[2][i]:
+#                 if squares[1][i] == '':
+#                     squares[1][i] = 'O'
+#                     return True
+
+# ############################################################
+
+# def checkcdiagonally(squares: list):
+#     #checkcdiagonally_from left to right
+#     if squares[0][0] == squares[1][1]: # if... == 'O'
+#         if squares[2][2] == '':
+#             squares[2][2] = 'O'
+#             return True
+#     if squares[1][1] and squares[1][1] == squares[2][2]:
+#         if squares[0][0] == '':
+#             squares[0][0] = 'O'
+#             return True
+#         else:
+#             if squares[0][2] == '':
+#                 squares[0][2] = 'O'
+#                 return True
+#             2
+#             if squares[0][1] == '':
+#                 squares[0][1] = 'O'
+#                 return True
+
+#     #checkcdiagonally_from righ to tleft
+#         if squares[0][2] and squares[0][2] == squares[1][1]:
+#             if squares[2][0] == '':
+#                 squares[2][0] = 'O'
+#                 return True
+#         if squares[1][1] and squares[1][1] == squares[2][0]:
+#             if squares[0][2] == '':
+#                 squares[0][2] = 'O'
+#                 return True
+
+# ############################################################
+
+# def checkrow_X(squares):
+#     for i in range(len(squares)):
+#         if '' in squares[i]:
+#             for j in range(len(squares[i])):
+#                 if squares[i].count('X') == 2:
+#                     if squares[i][j] == '':
+#                         squares[i][j] = 'O'
+#                         return True
+
+# ############################################################
+
+# def checkcolumn_X(squares:list):
+#     for i in range(len(squares)):
+#             if squares[0][i] == 'X' and squares[0][i] == squares[1][i]:
+#                 if squares[2][i] == '':
+#                     squares[2][i] = 'O'
+#                     return True
+#             if squares[1][i] == 'X' and squares[1][i] == squares[2][i]:
+#                 if squares[0][i] == '':
+#                     squares[0][i] = 'O'
+#                     return True
+#             if squares[0][i] == 'X' and squares[0][i] == squares[2][i]:
+#                 if squares[1][i] == '':
+#                     squares[1][i] = 'O'
+#                     return True
+
+# ############################################################
+
+# def  check3slots(squares: list):
+#     if squares[1][1] == 'O':
+#         if squares[0][0] == 'X' and squares[2][2] == 'X' or squares[0][2] == 'X' and squares [2][0] == 'X':
+#             if squares[0][1] == '':
+#                 squares[0][1] = 'O'
+#                 return True
+#             if squares[2][1] == '':
+#                 squares[2][1] = 'O'
+#                 return True
+#         if squares[0][0] == 'X' and squares[1][2] == 'X' or squares[0][1] == 'X' and squares[2][2] == 'X' or squares[0][1] == 'X' and squares[1][2] == 'X':
+#             if squares[0][2] == '':
+#                 squares[0][2] = 'O'
+#                 return True
+#         if squares[0][2] == 'X' and squares[1][0] == 'X' or squares[0][1] == 'X' and squares[2][0] == 'X' or squares[0][1] == 'X' and squares[1][0] == 'X' :#or tictactoe[0][1] == 'X' and tictactoe[2][1] or tictactoe[1][0] == 'X' and tictactoe[1][2]:
+#             if squares[0][0] == '':
+#                 squares[0][0] = 'O'
+#                 return True
+#         if squares[0][2] == 'X' and squares[2][1] == 'X' or squares[1][2] == 'X' and squares[2][0] == 'X' or squares[1][2] == 'X' and squares[2][1] == 'X':
+#             if squares[2][2] == '':
+#                 squares[2][2] = 'O'
+#                 return True
+#         if squares[0][0] == 'X' and squares[2][1] == 'X' or squares[1][0] == 'X' and squares[2][2] == 'X' or squares[1][0] == 'X' and squares[2][1] == 'X':
+#             if squares[2][0] == '':
+#                 squares[2][0] = 'O'
+#                 return True
+
+#     for i in range(len(squares)):
+#         for j in range(len(squares[i])):
+#             if squares[i][j] == '':
+#                 squares[i][j] = 'O'
+#                 return True
