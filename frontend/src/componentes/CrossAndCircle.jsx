@@ -17,13 +17,13 @@ export default function Game() {
     };
 
     try {
-      const response = await axios.post("http://127.0.0.1:5001/api/data", data);
+      const response = await axios.post("https://tic-tac-toe-server-m4ks.onrender.com", data);//http://127.0.0.1:5001/api/data
       const win = response.data.win
       const squaresFlat = response.data.squares.flat()
       if (win) {
         setSquares(squaresFlat);
-        console.log(win);
         alert(`win is: ${win}`);
+        location.reload();
       }
 
       setSquares(squaresFlat);
