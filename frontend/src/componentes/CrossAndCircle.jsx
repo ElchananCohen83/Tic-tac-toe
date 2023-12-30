@@ -8,6 +8,7 @@ export default function Game() {
   const [squares, setSquares] = useState(Array(9).fill("")); // Array to store values for each square
   const [vsAI, setVsAI] = useState(false);
   const [calculateWinner, setCalculateWinner] = useState(false);
+  const [count, setCount] = useState(1);
 
   const handleSubmit = async (newSquares) => {
     const data = {
@@ -37,6 +38,7 @@ export default function Game() {
   };
 
   const onClick = (index) => {
+
     if (vsAI) {
       // Check if the square is already filled or the game is over
       if (squares[index] || calculateWinner) {
@@ -48,17 +50,27 @@ export default function Game() {
       // Clone the squares array to avoid mutating state directly
       const newSquares = [...squares];
 
-      // Update the value for the clicked square based on xIsNext
-      newSquares[index] = "X";
-      // newSquares[index] = !xIsNext ? "X" : "O";
+      if (vsAI === 2) {
+        // Update the value for the clicked square based on xIsNext
+        newSquares[index] = "X";
+        // newSquares[index] = !xIsNext ? "X" : "O";
+      }
 
+
+      if (vsAI === 1) {
+        if (count % 2 == 0) {
+          newSquares[index] = "O";
+        } else {
+          newSquares[index] = "X";
+        }
+      }
+
+      setCount(count+1)
       // Update the state with the new squares array
       setSquares(newSquares);
 
       handleSubmit(newSquares, vsAI);
     }
-
-    
   };
 
 
