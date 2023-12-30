@@ -4,14 +4,12 @@ from computer import computer
 
 
 def make_step(squares, vsAI):
-    print(vsAI)
     if vsAI == 1:
         return win(squares)
     else:
         if win(squares):
             return win(squares)
         else:
-            print("computer")
             computer(squares)
 
 ############################################################
