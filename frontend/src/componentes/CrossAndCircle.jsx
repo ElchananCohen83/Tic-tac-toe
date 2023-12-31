@@ -10,6 +10,9 @@ export default function Game() {
   const [calculateWinner, setCalculateWinner] = useState(false);
   const [count, setCount] = useState(1);
 
+  // const backgroundImage = import.meta.env.VITE_BACKGROUND_IMAGE || './public/background.jpg';
+  const backgroundImage = import.meta.env.VITE_BACKGROUND_IMAGE;
+
   const handleSubmit = async (newSquares) => {
     const data = {
       squares: newSquares,
@@ -78,7 +81,19 @@ export default function Game() {
 
 
   return (
-    <div>
+    <div
+    style={{
+      maxWidth: '1280px',
+      margin: '0 auto',
+      textAlign: 'center',
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundImage: `url('${import.meta.env.VITE_BACKGROUND_IMAGE}')`,
+    }}
+  >
       {!vsAI && (
         <>
           <button className="choose" onClick={() => setVsAI(1)}>לשחק נגד חבר</button>
