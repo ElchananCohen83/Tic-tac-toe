@@ -10,7 +10,21 @@ export default function Game() {
   const [calculateWinner, setCalculateWinner] = useState(false);
   const [count, setCount] = useState(1);
 
+
   const backgroundImage = import.meta.env.VITE_BACKGROUND_IMAGE || 'url(./public/background.jpg)';
+
+  useEffect(() => {
+    if (calculateWinner) {
+      // Delay the alert to allow the UI to update first
+      const timeoutId = setTimeout(() => {
+        alert(`Win is: ${calculateWinner}`);
+        location.reload();
+      }, 100);
+
+      // Cleanup the timeout to avoid memory leaks
+      return () => clearTimeout(timeoutId);
+    }
+  }, [calculateWinner]);
 
   const handleSubmit = async (newSquares) => {
     const data = {
@@ -22,10 +36,10 @@ export default function Game() {
       // const response = await axios.post("https://tic-tac-toe-server-m4ks.onrender.com", data)
       const response = await axios.post("http://127.0.0.1:5001/api/data", data);
 
-      const win = response.data.win
+      setCalculateWinner(response.data.win)
       const squaresFlat = response.data.squares.flat()
-      if (win) {
-        setSquares(squaresFlat);
+      
+      if (calculateWinner) {
         alert(`win is: ${win}`);
         location.reload();
       }
@@ -78,23 +92,24 @@ export default function Game() {
   };
 
 
+
   return (
     <div
-    style={{
-      maxWidth: '1280px',
-      margin: '0 auto',
-      textAlign: 'center',
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundImage: `url('${backgroundImage}')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-    }}
-  >
+      style={{
+        maxWidth: '1280px',
+        margin: '0 auto',
+        textAlign: 'center',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundImage: `url('${backgroundImage}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       {!vsAI && (
         <>
           <button className="choose" onClick={() => setVsAI(1)}>לשחק נגד חבר</button>
