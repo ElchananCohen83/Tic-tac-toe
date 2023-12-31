@@ -1,29 +1,36 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import StepAndRool as sar
 
 app = Flask(__name__)
-CORS(app, origins=["https://tic-tac-toe-front-4a0m.onrender.com"])
+CORS(app, origins=["https://tic-tac-toe-front-4a0m.onrender.com"], supports_credentials=True)
 
-@app.route('/api/data', methods=['POST'])
+@app.route('/api/data', methods=['POST', 'OPTIONS'])
 def post_data():
-    data = request.get_json()
-    squares = data.get('squares', [])
-    vsAI = data.get('vsAI')
-
-    nested_array = [squares[i:i+3] for i in range(0, 9, 3)]
-    squares = nested_array
-
-    result = sar.make_step(squares, vsAI)
-
-    if sar.win(squares) is False:
-        return jsonify({"squares": squares, "win": False})
+    if request.method == 'OPTIONS':
+        response = app.make_default_options_response()
     else:
-        result = sar.win(squares)
-        return jsonify({"squares": squares, "win": result})
+        data = request.get_json()
+        squares = data.get('squares', [])
+        vsAI = data.get('vsAI')
+
+        nested_array = [squares[i:i+3] for i in range(0, 9, 3)]
+        squares = nested_array
+
+        result = sar.make_step(squares, vsAI)
+
+        if sar.win(squares) is False:
+            response = jsonify({"squares": squares, "win": False})
+        else:
+            result = sar.win(squares)
+            response = jsonify({"squares": squares, "win": result})
+
+    # Add CORS headers to the response
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
 
 
 
