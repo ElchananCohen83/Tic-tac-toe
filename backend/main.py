@@ -8,8 +8,7 @@ CORS(app, origins=["https://tic-tac-toe-front-4a0m.onrender.com"], supports_cred
 @app.route('/api/data', methods=['POST', 'OPTIONS'])
 def post_data():
     if request.method == 'OPTIONS':
-        response = app.make_default_options_response()
-        response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+        response = jsonify({"message": "Preflight request received"})
     else:
         data = request.get_json()
         squares = data.get('squares', [])
@@ -27,10 +26,15 @@ def post_data():
             response = jsonify({"squares": squares, "win": result})
 
     # Add CORS headers to the response
+    response.headers['Access-Control-Allow-Origin'] = 'https://tic-tac-toe-front-4a0m.onrender.com'
+    response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+
     return response
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
 
 
 
