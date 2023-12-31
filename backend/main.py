@@ -9,6 +9,7 @@ CORS(app, origins=["https://tic-tac-toe-front-4a0m.onrender.com"], supports_cred
 def post_data():
     if request.method == 'OPTIONS':
         response = app.make_default_options_response()
+        response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
     else:
         data = request.get_json()
         squares = data.get('squares', [])
@@ -30,6 +31,8 @@ def post_data():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
+
 
 
 
