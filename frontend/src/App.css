@@ -2,14 +2,13 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-image: url('./public/background.jpg');
+  background-image: url('public/background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
   height: 100vh;
