@@ -1,19 +1,23 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 #root {
   max-width: 1280px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   text-align: center;
-  height: 100vh; /* Set the height of #root to 100% of the viewport height */
-
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./public/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
-.squares {
-  background-color: #21213E;
-  color: #F6C927;
-  font-size: 400%; /* Set font size as a percentage of the width */
-  width: 20vmin; /* Set width based on the smaller of vw and vh */
-  height: 20vmin; /* Set height based on the smaller of vw and vh */
-}
-
 
 .board {
   display: flex;
@@ -21,9 +25,23 @@
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
-  margin: auto;
   max-width: 60vmin;
-  height: 100%; /* Set the height of .board to 100% of its parent's height */
+  width: 100%; /* Make sure the width is 100% */
 }
 
+.squares {
+  background-color: #ead5ba;
+  color: #13233b;
+  font-size: 400%;
+  width: 20vmin;
+  height: 20vmin;
+}
 
+.choose {
+  background-color: #05bcaa;
+  margin-inline: 5px;
+  width: 20vmin;
+  height: 8vmin;
+  border-radius: 10px;
+  margin-bottom: 10px; /* Optional: Add margin to separate buttons */
+}

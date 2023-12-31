@@ -17,7 +17,9 @@ export default function Game() {
     };
 
     try {
-      const response = await axios.post("https://tic-tac-toe-server-m4ks.onrender.com", data);//http://127.0.0.1:5001/api/data
+      // const response = await axios.post("https://tic-tac-toe-server-m4ks.onrender.com", data)
+      const response = await axios.post("http://127.0.0.1:5001/api/data", data);
+
       const win = response.data.win
       const squaresFlat = response.data.squares.flat()
       if (win) {
@@ -65,7 +67,7 @@ export default function Game() {
         }
       }
 
-      setCount(count+1)
+      setCount(count + 1)
       // Update the state with the new squares array
       setSquares(newSquares);
 
@@ -76,23 +78,24 @@ export default function Game() {
 
 
   return (
-    <div className="board">
-      {squares.map((value, index) => (
-        <button
-          key={index}
-          className={`square squares`}
-          onClick={() => onClick(index)}
-        >
-          {value}
-        </button>
-      ))}
+    <div>
       {!vsAI && (
         <>
-          <button onClick={() => setVsAI(1)}>לשחק נגד חבר</button>
-          <button onClick={() => setVsAI(2)}>לשחק נגד המחשב</button>
+          <button className="choose" onClick={() => setVsAI(1)}>לשחק נגד חבר</button>
+          <button className="choose" onClick={() => setVsAI(2)}>לשחק נגד המחשב</button>
         </>
       )}
-
+      <div className="board">
+        {squares.map((value, index) => (
+          <button
+            key={index}
+            className={`square squares`}
+            onClick={() => onClick(index)}
+          >
+            {value}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

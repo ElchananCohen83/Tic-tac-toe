@@ -4,7 +4,7 @@ import StepAndRool as sar
 
 app = Flask(__name__)
 CORS(app, origins="http://localhost:5173")
-app.secret_key = 'your_secret_key'
+# app.secret_key = 'your_secret_key'
 
 @app.route('/api/data', methods=['POST'])
 def post_data():
