@@ -10,8 +10,7 @@ export default function Game() {
   const [calculateWinner, setCalculateWinner] = useState(false);
   const [count, setCount] = useState(1);
 
-  // const backgroundImage = import.meta.env.VITE_BACKGROUND_IMAGE || './public/background.jpg';
-  const backgroundImage = import.meta.env.VITE_BACKGROUND_IMAGE;
+  const backgroundImage = import.meta.env.VITE_BACKGROUND_IMAGE || 'url(./public/background.jpg)';
 
   const handleSubmit = async (newSquares) => {
     const data = {
@@ -91,7 +90,7 @@ export default function Game() {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundImage: `url('${import.meta.env.VITE_BACKGROUND_IMAGE}')`,
+      backgroundImage: `url('${backgroundImage}')`,
     }}
   >
       {!vsAI && (
