@@ -33,8 +33,8 @@ export default function Game() {
     };
 
     try {
-      // const response = await axios.post("https://tic-tac-toe-server-m4ks.onrender.com", data)
-      const response = await axios.post("http://127.0.0.1:5001/api/data", data);
+      const response = await axios.post("https://tic-tac-toe-elchanancohen83s-projects.vercel.app/", data)
+      // const response = await axios.post("http://127.0.0.1:5001/api/data", data);
 
       setCalculateWinner(response.data.win)
       const squaresFlat = response.data.squares.flat()
@@ -90,8 +90,6 @@ export default function Game() {
       handleSubmit(newSquares, vsAI);
     }
   };
-
-
 
   return (
     <div

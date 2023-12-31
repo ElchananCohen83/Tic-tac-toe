@@ -3,7 +3,8 @@ from flask_cors import CORS
 import StepAndRool as sar
 
 app = Flask(__name__)
-CORS(app, origins="http://localhost:5173")
+CORS(app, origins="*", supports_credentials=True)
+# CORS(app, origins="http://localhost:5173")
 # app.secret_key = 'your_secret_key'
 
 @app.route('/api/data', methods=['POST'])
