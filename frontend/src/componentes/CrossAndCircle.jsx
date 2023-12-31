@@ -96,7 +96,6 @@ export default function Game() {
   return (
     <div
       style={{
-        maxWidth: '1280px',
         margin: '0 auto',
         textAlign: 'center',
         height: '100vh',
