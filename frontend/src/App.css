@@ -2,9 +2,13 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-image: url('./public/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* #root {
+#root {
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
@@ -13,11 +17,11 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('./public/background.jpg');
+  /* background-image: url('./public/background.jpg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-} */
+  background-repeat: no-repeat; */
+}
 
 .board {
   display: flex;
@@ -40,10 +44,16 @@ body, html {
 .choose {
 background-color: #05bcaa;
 margin-bottom: 10px; /* Optional: Add margin to separate buttons */
+font-size: 100%;
 width: 20vmin;
 height: 8vmin;
 border-radius: 10px;
 margin-inline: 2vmin;
+}
+
+h1{
+  color:white
+  ;
 }
 
 

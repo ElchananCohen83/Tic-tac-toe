@@ -11,7 +11,7 @@ export default function Game() {
   const [count, setCount] = useState(1);
 
 
-  const backgroundImage = import.meta.env.VITE_BACKGROUND_IMAGE || 'url(./public/background.jpg)';
+  // const backgroundImage = import.meta.env.VITE_BACKGROUND_IMAGE || 'url(./public/background.jpg)';
 
   useEffect(() => {
     if (calculateWinner) {
@@ -38,7 +38,7 @@ export default function Game() {
 
       setCalculateWinner(response.data.win)
       const squaresFlat = response.data.squares.flat()
-      
+
       if (calculateWinner) {
         alert(`win is: ${win}`);
         location.reload();
@@ -93,25 +93,29 @@ export default function Game() {
 
   return (
     <div
-      style={{
-        margin: '0 auto',
-        textAlign: 'center',
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundImage: `url('${backgroundImage}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+      // style={{
+      //   margin: '0 auto',
+      //   textAlign: 'center',
+      //   height: '100vh',
+      //   display: 'flex',
+      //   flexDirection: 'column',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      //   backgroundImage: `url('${backgroundImage}')`,
+      //   backgroundSize: 'cover',
+      //   backgroundPosition: 'center',
+      //   backgroundRepeat: 'no-repeat',
+      // }}
     >
       {!vsAI && (
         <>
-          <button className="choose" onClick={() => setVsAI(1)}>לשחק נגד חבר</button>
-          <button className="choose" onClick={() => setVsAI(2)}>לשחק נגד המחשב</button>
+          <h1>אני רוצה לשחק עם</h1>
+          <div className="button">
+            <button className="choose" onClick={() => setVsAI(1)}>חבר</button>
+            <button className="choose" onClick={() => setVsAI(2)}>מחשב</button>
+          </div>
         </>
+
       )}
       <div className="board">
         {squares.map((value, index) => (
