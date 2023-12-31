@@ -1,8 +1,5 @@
 from computer import computer
 
-############################################################
-
-
 def make_step(squares, vsAI):
     if vsAI == 1:
         return win(squares)
@@ -12,7 +9,6 @@ def make_step(squares, vsAI):
         else:
             computer(squares)
 
-############################################################
 
 def win(squares):
     for i in range(len(squares)):

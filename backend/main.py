@@ -16,8 +16,6 @@ def post_data():
     squares = nested_array
 
     result = sar.make_step(squares, vsAI)
-    # print(squares)
-
 
     if sar.win(squares) is False:
         return jsonify({"squares":squares , "win": False})
