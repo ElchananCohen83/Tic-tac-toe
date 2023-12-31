@@ -5,8 +5,14 @@ body, html {
 }
 
 /* #root {
-
-
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-image: url('./public/background.jpg');
   background-size: cover;
   background-position: center;
@@ -32,10 +38,12 @@ body, html {
 }
 
 .choose {
-  background-color: #05bcaa;
-  margin-inline: 5px;
-  width: 20vmin;
-  height: 8vmin;
-  border-radius: 10px;
-  margin-bottom: 10px; /* Optional: Add margin to separate buttons */
+background-color: #05bcaa;
+margin-bottom: 10px; /* Optional: Add margin to separate buttons */
+width: 20vmin;
+height: 8vmin;
+border-radius: 10px;
+margin-inline: 2vmin;
 }
+
+

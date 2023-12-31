@@ -78,7 +78,6 @@ export default function Game() {
   };
 
 
-
   return (
     <div
     style={{
@@ -91,6 +90,9 @@ export default function Game() {
       justifyContent: 'center',
       alignItems: 'center',
       backgroundImage: `url('${backgroundImage}')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
     }}
   >
       {!vsAI && (
