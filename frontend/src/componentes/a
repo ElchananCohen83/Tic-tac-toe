@@ -139,3 +139,63 @@ const Square = ({ value, onClick }) => (
   };
   
   export default Game;
+
+
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('../assets/public/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  #root {
+    margin: 0 auto;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url('./public/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+  }
+  
+  .board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    max-width: 60vmin;
+    width: 100%; /* Make sure the width is 100% */
+  }
+  
+  .squares {
+    background-color: #ead5ba;
+    color: #13233b;
+    font-size: 400%;
+    width: 20vmin;
+    height: 20vmin;
+  }
+  
+  .choose {
+  background-color: #05bcaa;
+  margin-bottom: 10px; /* Optional: Add margin to separate buttons */
+  font-size: 100%;
+  font-weight: bold;
+  width: 20vmin;
+  height: 8vmin;
+  border-radius: 10px;
+  margin-inline: 2vmin;
+  }
+  
+  h1{
+    color:white
+    ;
+  }
