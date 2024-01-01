@@ -1,4 +1,5 @@
 def computer(squares):
+    print(111)
     if squares[1][1] == '':
         squares[1][1] = 'O'
         return
@@ -22,10 +23,11 @@ def computer(squares):
 ############################################################
 
 def checkrow_O(squares):
+    print(222)
     for i in range(len(squares)):
         if '' in squares[i]:
             for j in range(len(squares[i])):
-                if squares[i].count('O') == 2:
+                if squares[i].count('O') == 2 or squares[i].count('X') == 2:
                     if squares[i][j] == '':
                         squares[i][j] = 'O'
                         return True
@@ -33,16 +35,17 @@ def checkrow_O(squares):
 ############################################################
 
 def checkcolumn_O(squares:list):
+    print(333)
     for i in range(len(squares)):
-            if squares[0][i] == 'O' and squares[0][i] == squares[1][i]:
+            if squares[0][i] == 'O' and squares[0][i] == squares[1][i] or squares[0][i] == 'X' and squares[0][i] == squares[1][i]:
                 if squares[2][i] == '':
                     squares[2][i] = 'O'
                     return True
-            if squares[1][i] == 'O' and squares[1][i] == squares[2][i]:
+            if squares[1][i] == 'O' and squares[1][i] == squares[2][i] or squares[1][i] == 'X' and squares[1][i] == squares[2][i]:
                 if squares[0][i] == '':
                     squares[0][i] = 'O'
                     return True
-            if squares[0][i] == 'O' and squares[0][i] == squares[2][i]:
+            if squares[0][i] == 'O' and squares[0][i] == squares[2][i] or squares[0][i] == 'X' and squares[0][i] == squares[2][i]:
                 if squares[1][i] == '':
                     squares[1][i] = 'O'
                     return True
@@ -50,6 +53,7 @@ def checkcolumn_O(squares:list):
 ############################################################
 
 def checkcdiagonally(squares: list):
+    print(444)
 #checkcdiagonally_from left to right
     if squares[0][0] == squares[1][1]: # if... == 'O'
         if squares[2][2] == '':
@@ -81,6 +85,7 @@ def checkcdiagonally(squares: list):
 ############################################################
 
 def checkrow_X(squares):
+    print(555)
     for i in range(len(squares)):
         if '' in squares[i]:
             for j in range(len(squares[i])):
@@ -92,6 +97,7 @@ def checkrow_X(squares):
 ############################################################
 
 def checkcolumn_X(squares:list):
+    print(666)
     for i in range(len(squares)):
             if squares[0][i] == 'X' and squares[0][i] == squares[1][i]:
                 if squares[2][i] == '':
@@ -109,6 +115,7 @@ def checkcolumn_X(squares:list):
 ############################################################
 
 def  check3slots(squares: list):
+    print(777)
     if squares[1][1] == 'O':
         if squares[0][0] == 'X' and squares[2][2] == 'X' or squares[0][2] == 'X' and squares [2][0] == 'X':
             if squares[0][1] == '':
@@ -139,10 +146,6 @@ def  check3slots(squares: list):
             if squares[i][j] == '':
                 squares[i][j] = 'O'
                 return True
-
-
-
-
 
 
 
