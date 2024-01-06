@@ -5,7 +5,6 @@
   transform: translateX(-50%);
   width: 80%;
   max-width: 400px;
-  box-shadow: 0 2px 5px #0003;
   z-index: 1000;
 }
 
