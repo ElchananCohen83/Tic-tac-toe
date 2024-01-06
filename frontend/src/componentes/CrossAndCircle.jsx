@@ -92,31 +92,17 @@ export default function Game() {
   };
 
   return (
-    <div
-      // style={{
-      //   margin: '0 auto',
-      //   textAlign: 'center',
-      //   height: '100vh',
-      //   display: 'flex',
-      //   flexDirection: 'column',
-      //   justifyContent: 'center',
-      //   alignItems: 'center',
-      //   backgroundImage: `url('${backgroundImage}')`,
-      //   backgroundSize: 'cover',
-      //   backgroundPosition: 'center',
-      //   backgroundRepeat: 'no-repeat',
-      // }}
-    >
+    <div>
       {!vsAI && (
-        <>
+        <div className="req_vs">
           <h1>אני רוצה לשחק עם</h1>
           <div className="button">
             <button className="choose" onClick={() => setVsAI(1)}>חבר</button>
             <button className="choose" onClick={() => setVsAI(2)}>מחשב</button>
           </div>
-        </>
-
+        </div>
       )}
+      
       <div className="board">
         {squares.map((value, index) => (
           <button
