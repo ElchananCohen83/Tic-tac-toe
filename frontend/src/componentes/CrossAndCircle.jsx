@@ -56,7 +56,6 @@ export default function Game() {
   };
 
   const onClick = (index) => {
-
     if (vsAI) {
       // Check if the square is already filled or the game is over
       if (squares[index] || calculateWinner) {
@@ -69,9 +68,7 @@ export default function Game() {
       const newSquares = [...squares];
 
       if (vsAI === 2) {
-        // Update the value for the clicked square based on xIsNext
         newSquares[index] = "X";
-        // newSquares[index] = !xIsNext ? "X" : "O";
       }
 
 
