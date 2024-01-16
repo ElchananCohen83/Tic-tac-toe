@@ -10,9 +10,6 @@ export default function Game() {
   const [calculateWinner, setCalculateWinner] = useState(false);
   const [count, setCount] = useState(1);
 
-
-  // const backgroundImage = import.meta.env.VITE_BACKGROUND_IMAGE || 'url(./public/background.jpg)';
-
   useEffect(() => {
     if (calculateWinner) {
       // Delay the alert to allow the UI to update first
@@ -55,11 +52,16 @@ export default function Game() {
   };
 
   const onClick = (index) => {
-    if (vsAI) {
-      // Check if the square is already filled or the game is over
-      if (squares[index] || calculateWinner) {
-        return;
-      }
+    const countX = squares.filter(square => square === 'X').length;
+    const countO = squares.filter(square => square === 'O').length;
+    if(countX === countO){
+      if (vsAI) {
+        // Check if the square is already filled or the game is over
+        if (squares[index] || calculateWinner) {
+          return;
+        }
+    }
+
 
       setxIsNext(!xIsNext);
 
@@ -67,7 +69,7 @@ export default function Game() {
       const newSquares = [...squares];
 
       if (vsAI === 2) {
-        newSquares[index] = "X";
+          newSquares[index] = "X";
       }
 
 
