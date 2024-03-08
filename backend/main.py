@@ -4,7 +4,7 @@ import StepAndRool as sar
 
 app = Flask(__name__)
 CORS(app, origins="https://tic-tac-toe-front-4a0m.onrender.com")
-# CORS(app, origins="http://localhost:5173")
+CORS(app, origins="http://localhost:5173")
 
 # app.secret_key = 'your_secret_key'
 
