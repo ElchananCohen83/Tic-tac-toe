@@ -32,7 +32,7 @@ export default function Game() {
     try {
       const response = await axios.post("https://tic-tac-toe-server-m4ks.onrender.com/api/data", data)
       // const response = await axios.post("http://127.0.0.1:5001/api/data", data);
-
+      console.log(response.data);
       setCalculateWinner(response.data.win)
       const squaresFlat = response.data.squares.flat()
 
@@ -52,42 +52,37 @@ export default function Game() {
   };
 
   const onClick = (index) => {
-    const countX = squares.filter(square => square === 'X').length;
-    const countO = squares.filter(square => square === 'O').length;
-    if(countX === countO){
-      if (vsAI) {
-        // Check if the square is already filled or the game is over
-        if (squares[index] || calculateWinner) {
-          return;
-        }
-    }
-
-
-      setxIsNext(!xIsNext);
-
-      // Clone the squares array to avoid mutating state directly
-      const newSquares = [...squares];
-
-      if (vsAI === 2) {
-          newSquares[index] = "X";
+    if (vsAI) {
+      // Check if the square is already filled or the game is over
+      if (squares[index] || calculateWinner) {
+        return;
       }
 
+    setxIsNext(!xIsNext);
 
-      if (vsAI === 1) {
-        if (count % 2 == 0) {
-          newSquares[index] = "O";
-        } else {
-          newSquares[index] = "X";
-        }
-      }
+    // Clone the squares array to avoid mutating state directly
+    const newSquares = [...squares];
 
-      setCount(count + 1)
-      // Update the state with the new squares array
-      setSquares(newSquares);
-
-      handleSubmit(newSquares, vsAI);
+    if (vsAI === 2) {
+        newSquares[index] = "X";
     }
-  };
+
+    if (vsAI === 1) {
+      if (count % 2 == 0) {
+        newSquares[index] = "O";
+      } else {
+        newSquares[index] = "X";
+      }
+    }
+
+    setCount(count + 1)
+    // Update the state with the new squares array
+    setSquares(newSquares);
+
+    handleSubmit(newSquares, vsAI);
+
+  }
+};
 
   return (
     <div>
